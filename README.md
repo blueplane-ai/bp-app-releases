@@ -35,3 +35,131 @@
    ```bash
    blueplane upgrade
    ```
+
+## Directory Allowlist & Ignorelist — CLI Guide
+
+Control which project directories have their telemetry synced to the cloud using `blueplane allowlist`.
+
+---
+
+### Quick Start
+
+```bash
+# Only sync telemetry from specific projects
+blueplane allowlist --add ~/projects/myapp
+blueplane allowlist --add ~/projects/research
+
+# Never sync telemetry from a sensitive subdirectory
+blueplane allowlist --ignore ~/projects/myapp/secrets
+
+# Apply changes
+blueplane restart
+```
+
+---
+
+### Commands
+
+#### View current configuration
+
+```bash
+blueplane allowlist
+```
+
+When no filters are configured, outputs:
+
+```
+No directory filters configured.
+All directories are synced.
+```
+
+When filters exist, outputs:
+
+```
+Allowed directories:
+  /Users/alice/projects/myapp
+  /Users/alice/projects/research
+
+Ignored directories:
+  /Users/alice/projects/myapp/secrets
+```
+
+#### Add directories to the allowlist
+
+```bash
+# Add a single directory
+blueplane allowlist --add /Users/alice/projects/myapp
+
+# Add multiple directories
+blueplane allowlist --add ~/projects/myapp --add ~/projects/research
+
+# Use relative paths (resolved to absolute automatically)
+cd ~/projects/myapp
+blueplane allowlist --add .
+```
+
+#### Remove directories from the allowlist
+
+```bash
+blueplane allowlist --remove /Users/alice/projects/myapp
+```
+
+#### Clear the entire allowlist
+
+```bash
+blueplane allowlist --clear-allowed
+```
+
+#### Add directories to the ignorelist
+
+```bash
+# Ignore a single directory
+blueplane allowlist --ignore ~/projects/private
+
+# Ignore multiple directories
+blueplane allowlist --ignore ~/projects/private --ignore ~/.secrets
+```
+
+#### Remove directories from the ignorelist
+
+```bash
+blueplane allowlist --unignore ~/projects/private
+```
+
+#### Clear the entire ignorelist
+
+```bash
+blueplane allowlist --clear-ignored
+```
+
+---
+
+### Flag Reference
+
+| Flag | Description |
+|---|---|
+| `--add <path>` | Add directory to allowlist (repeatable) |
+| `--remove <path>` | Remove directory from allowlist (repeatable) |
+| `--ignore <path>` | Add directory to ignorelist (repeatable) |
+| `--unignore <path>` | Remove directory from ignorelist (repeatable) |
+| `--clear-allowed` | Clear all allowed directories |
+| `--clear-ignored` | Clear all ignored directories |
+
+All changes require `blueplane restart` to take effect.
+
+---
+
+### Editing the config directly
+
+The CLI writes to `~/.blueplane/agent.yaml`. The two relevant keys are `allowed_directories` and `ignored_directories`:
+
+```yaml
+# ~/.blueplane/agent.yaml (other fields omitted)
+allowed_directories:
+  - /Users/alice/projects/myapp
+  - /Users/alice/projects/research
+ignored_directories:
+  - /Users/alice/projects/private
+```
+
+If you edit the file by hand, restart the daemon with `blueplane restart`.
