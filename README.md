@@ -24,7 +24,7 @@
    ```bash
    blueplane login
    ```
-   Authenticate using your `@superfiliate.com` email address.
+   Authenticate using your Google Workspace email address.
 
 5. Start the daemon:
    ```bash
