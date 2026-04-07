@@ -1,5 +1,11 @@
 # Blueplane Desktop App
 
+## BPM — Blueplane Package Manager
+
+BPM is a package manager for AI coding tool extensions. Create, publish, and install reusable **skills**, **commands**, and **hooks** that work across Claude Code and Cursor. See the full documentation in [BPM.md](BPM.md).
+
+---
+
 ## Installation and Launch
 
 1. Download and run the setup script:
