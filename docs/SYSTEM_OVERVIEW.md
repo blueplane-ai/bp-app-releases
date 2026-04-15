@@ -70,9 +70,6 @@ graph TB
 
     BPFiles -- Sync --> CloudSync
 
-    style AI Coding Platforms fill:#dbeafe,stroke:#93c5fd
-    style Blueplane Daemon fill:#d1fae5,stroke:#6ee7b7
-    style Cloud Platform fill:#ede9fe,stroke:#c4b5fd
 ```
 
 ---
