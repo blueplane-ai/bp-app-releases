@@ -205,18 +205,6 @@ sequenceDiagram
 - **Scoped uploads** -- Each upload is isolated by organization, user, and device, preventing any possibility of data mixing.
 - **Automatic cleanup** -- Temporary files in cloud storage expire automatically after a short period, even if the cleanup step fails.
 
-### What Gets Synced
-
-The daemon collects and syncs data from each supported platform:
-
-| Platform    | Data collected                                                     |
-| ----------- | ------------------------------------------------------------------ |
-| Claude Code | Session transcripts, hook events (tool use, prompts, compactions)  |
-| Cursor      | Composer sessions, AI interactions, usage metrics                  |
-| Codex       | Session events, tool use                                           |
-
-All data is associated with the developer's identity and device, enabling per-user and per-team reporting.
-
 ---
 
 ## Blueplane Package Manager (BPM)
