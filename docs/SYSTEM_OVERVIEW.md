@@ -225,4 +225,4 @@ For a full overview of the Blueplane Package Manager, see [BPM_OVERVIEW.md](./BP
 
 ---
 
-**In short:** Blueplane installs in minutes, runs invisibly in the background, keeps AI tool usage data flowing securely to the cloud, and gives organizations a way to standardize and share AI tool customizations across their teams.
+**In short:** Blueplane installs in seconds, runs invisibly in the background, keeps AI tool usage data flowing securely to the cloud, and gives organizations a way to standardize and share AI tool customizations across their teams.
