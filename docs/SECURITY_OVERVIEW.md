@@ -57,10 +57,8 @@ Blueplane captures **structured metadata** about AI coding tool sessions. It doe
 
 ## 3. Data Sanitization and Content Redaction
 
-### What Is in Place Today
-
 - **File contents are redacted on-device** before being included in any sync batch. The content of files read or edited by the AI tool is never included in telemetry payloads — only file paths and diff summaries (line counts) are transmitted.
-- **The sanitization pipeline architecture** is implemented: every row passes through a configurable `Sanitizer` interface in the daemon before being batched for upload. This design allows per-table, per-field redaction rules without changes to the sync pipeline.
+- **The sanitization pipeline architecture** runs a configurable `Sanitizer` interface in the daemon before uploading rows. This design allows per-table, per-field redaction rules without changes to the sync pipeline. By default, the system filters common security vulnerabilities such as GitHub tokens, CSRF tokens, session tokens, bearer tokens, AWS keys, and git remote URLs.
 
 ---
 
